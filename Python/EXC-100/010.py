@@ -1,0 +1,1 @@
+larg = int(input(''))
