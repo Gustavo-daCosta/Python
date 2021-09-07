@@ -1,5 +1,4 @@
-menor = 0
-maior = 0
+menor = maior = 0
 for c in range(1,6):
     peso = int(input(f'Digite o peso da {c}° pessoa: '))
     if c == 1:
