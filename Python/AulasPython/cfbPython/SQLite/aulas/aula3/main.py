@@ -13,6 +13,17 @@ def ConexaoBanco():
     return con
 vcon = ConexaoBanco()
 
+# INSERIR
+def inserir(conexao, sql):
+    try:
+        c = conexao.cursor()
+        c.execute(sql)
+        conexao.commit()
+    except Error as ex:
+        print(ex)
+    finally:
+        print('Registro inserido')
+''' 
 nome = str(input('Digite o nome: '))
 telefone = str(input('Digite o telefone: '))
 email = str(input('Digite o email: '))
@@ -20,13 +31,21 @@ email = str(input('Digite o email: '))
 vsql = f"""INSERT INTO tb_contatos 
             (T_NOMECONTATO, T_TELEFONECONTATO, T_EMAILCONTATO)
         VALUES('{nome}', '{telefone}', '{email}')"""
-def inserir(conexao, sql):
+
+inserir(vcon, vsql)
+'''
+
+# DELETAR
+def deletar(conexao, sql):
     try:
         c = conexao.cursor()
         c.execute(sql)
         conexao.commit()
-        print('Registro inserido')
     except Error as ex:
         print(ex)
+    finally:
+        print('Registro removido')
 
-inserir(vcon, vsql)
+vsql = """DELETE FROM tb_contatos WHERE N_IDCONTATO = 1"""
+
+deletar(vcon, vsql)
