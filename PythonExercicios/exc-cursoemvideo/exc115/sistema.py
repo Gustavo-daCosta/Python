@@ -1,42 +1,61 @@
-from exc115.interface import cabecalho
+from os import system, path
 
-lista = [
-    'Ana Paula Vieira', 32,
-    'Claúdio Mendonça', 18,
-    'Gustavo Guanabara', 41,
-    'Maria Clara Peixoto', 65,
-    'Maurício Souza', 19,
-    'Nilce Pedrosa', 43,
-    'Pedro Gonçalves', 18,
-    'Rafael Albuquerque', 38,
-    'Renata Soares', 13
-]
+caminho = path.dirname(__file__)
+nomeArquivo = caminho + '\\registro.txt'
 
-def cadastro():
+def titulo(texto):
+    print('-'*45)
+    print(texto.center(45))
+    print('-'*45)
+
+def Menu():
+    system('cls')
+    titulo('MENU PRINCIPAL')
+    print('''[ 1 ] - Cadastrar nova pessoa
+[ 2 ] - Ver pessoas cadastradas
+[ 3 ] - Sair do sistema''')
     while True:
-        print('-'*50)
-        print('MENU PRINCIPAL'.center(50))
-        print('-'*50)
-        print('\033[1;33m1 -\033[m \033[1;34mVer pessoas cadastradas')
-        print('\033[1;33m2 -\033[m \033[1;34mCadastrar nova pessoa')
-        print('\033[1;33m3 -\033[m \033[1;34mSair do sistema')
-        print('-'*50)
         try:
-            opcao = int(input('\033[1;33mSua opção: \033[m'))
-        except TypeError:
-            print('ERRO')
-        if opcao == 1:
-            print('PESSOAS CADASTRADAS'.center(50))
-            print('-'*50)
-            for c in range(0, len(lista), 2):
-                print(f'{lista[c]:<20}{lista[c+1]:>25} anos')
-        elif opcao == 2:
-            print('-'*50)
-            print('NOVO CADASTRO'.center(50))
-            print('-'*50)
+            opcao = int(input('Selecione uma opção: '))
+        except:
+            print('ERRO! Digite uma opção válida')
+        finally:
+            if isinstance(opcao, int) is True and 0 < opcao < 4:
+                break
+            else:
+                print('ERRO! Digite um valor entre 1 e 3.')
+    return opcao
+
+def CadastrarPessoa():
+    # nome / idade / email
+    system('cls')
+    while True:
+        titulo('Opção 1')
+        try:
             nome = str(input('Nome: '))
-            lista.append(nome)
-            lista.append(int(input('Idade: ')))
-            print(f'Novo registro de {nome} adicionado.')
-        else:
-            break
+            idade = int(input('Idade: '))
+            email = str(input('E-mail: '))
+        except:
+            print('ERRO! Valor inválido, tente novamente.')
+        finally:
+            if '@' in email and '.' in email and len(email) <= 64:
+                print('Registro concluído!')
+                input('Aperte ENTER para continuar...')
+                system('cls')
+                break
+    arquivo = open(nomeArquivo, "a")
+    arquivo.write('\n')
+    arquivo.write(f'Nome\t: {nome}\n')
+    arquivo.write(f'Idade\t: {idade}\n')
+    arquivo.write(f'E-mail\t: {email}\n')
+    arquivo.write('-'*35)
+    arquivo.close
+
+
+def VerPessoasCadastradas():
+    system('cls')
+    titulo('Opção 2')
+    arquivo = open(nomeArquivo, 'r')
+    pessoasCadastradas = arquivo.read()
+    print(pessoasCadastradas)
+    input('Aperte ENTER para continuar...')

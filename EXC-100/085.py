@@ -1,41 +1,21 @@
-nome, genero, salario = list(), list(), list()
-varnome = vargenero = varsalario = 0
+dadosListados = list()
 
 for c in range(0, 5):
-    print(f'{c+1}° CADASTRO'.center(60, '-'))
-
-    # VERIFICAR NOME
     while True:
-        varnome = str(input('Nome: '))
+        print(f'\n{f"FUNCIONÁRIO {c+1}":^50}')
         try:
-            varnome = int(varnome)
-            print('ERRO! Digite um nome válido.')
-        except:
-            pass
-        try:
-            if isinstance(varnome, int) is False:
-                varnome = float(varnome)
-                print('ERRO! Digite um nome válido.')
-            else:
-                pass
-        except:
-            pass
-        if isinstance(varnome, str) is True:
+            nome = str(input('Nome: '))
+            genero = str(input('Genêro [M/F]: '))
+            salario = float(input('Salário: R$'))
+            if genero.upper() not in 'MF':
+                raise ValueError
             break
+        except:
+            print('ERRO! Tente novamente.')
+    if genero == 'F' and salario > 5000:
+        dadosListados.append(nome)
     
-    # VERIFICAR GÊNERO
-    while True:
-        vargenero = str(input('Digite o seu gênero [M/F]: '))
-        try:
-            vargenero = int(vargenero)
-            print('ERRO! Digite um gênero válido.')
-        except:
-            pass
-        try:
-            if isinstance(vargenero, int) is False:
-                vargenero = float(vargenero)
-                print('ERRO! Digite um gênero válido.')
-            else:
-                pass
-        except:
-            pass
+print('Funcionárias do genêro feminino que ganham mais de R$5 mil:')
+for nome in dadosListados:
+    print(f'{(dadosListados.index(nome)) + 1} - {nome}')
+    del(dadosListados[dadosListados.index(nome)])

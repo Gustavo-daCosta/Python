@@ -11,7 +11,6 @@ TESOURA [ 3 ]''')
     opcao = int(input('Escolha uma opção: '))
     print('-'*40)
     comput = randint(1, 3)
-    print(comput)
     
     if opcao == 1:
         opcao = 'PEDRA'
@@ -25,7 +24,7 @@ TESOURA [ 3 ]''')
         comput = 'PAPEL'
     if comput == 3:
         comput = 'TESOURA'
-    #-------------------------
+
     if (opcao == 'PEDRA' and comput == 'TESOURA') or (opcao == 'PAPEL' and comput == 'PEDRA') or (opcao == 'TESOURA' and comput == 'PAPEL'):
         msg = 'Parábens! Você venceu! (:'  
     if (comput == 'PEDRA' and opcao == 'TESOURA') or (comput == 'PAPEL' and opcao == 'PEDRA') or (comput == 'TESOURA' and opcao == 'PAPEL'):

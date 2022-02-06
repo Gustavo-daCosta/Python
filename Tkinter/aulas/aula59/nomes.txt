@@ -1,0 +1,11 @@
+
+Nome    : Gustavo
+Telefone: 110032489
+E-mail  : gustavo@email.com
+OBS     : texto
+
+Nome    : guti
+Telefone: (11)13874-5882
+E-mail  : guti@email.com
+OBS     : teste
+

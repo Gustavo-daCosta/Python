@@ -1,0 +1,8 @@
+Nome	: Gustavo
+Idade	: 15
+E-mail	: gustavo@email.com
+-----------------------------------
+Nome	: Jorge
+Idade	: 43
+E-mail	: jorge@email.com
+-----------------------------------

@@ -4,8 +4,8 @@ from sqlite3 import Error
 
 # Exemplo de como conectar com o banco de dados
 def ConexaoBanco():
-    caminho = "C:/Users/macie/OneDrive/Área de Trabalho/Python/Python/AulasPython/cfbPython/SQLite/database/agenda.db"
-    con = None
+    caminho = "C:/Users/macie/OneDrive/Área de Trabalho/Python/AulasPython/cfbPython/SQLite/database/agenda.db"
+    con = sqlite3.connect(caminho)
     try:
         con = sqlite3.connect(caminho)
     except Error as ex:
