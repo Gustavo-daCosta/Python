@@ -1,0 +1,1 @@
+# não entendi nada do que tá escrito no site então desisti desse e fui pro próximo
